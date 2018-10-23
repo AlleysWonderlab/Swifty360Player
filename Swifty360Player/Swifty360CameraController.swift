@@ -229,6 +229,34 @@ open class Swifty360CameraController: NSObject, UIGestureRecognizerDelegate {
     func updateCameraFOV(withViewSize viewSize: CGSize) {
         pointOfView.camera?.yFov = Swifty360OptimalYFovForViewSize(viewSize: viewSize).getDouble()
     }
+    
+    func setCameraFOV(viewSize: CGSize) {
+        isAnimatingReorientation = true
+        SCNTransaction.begin()
+        SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: "easeIn")
+        SCNTransaction.animationDuration = 0.2
+        pointOfView.camera?.yFov = Swifty360OptimalYFovForViewSize(viewSize: viewSize).getDouble()
+        SCNTransaction.completionBlock = {
+            SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: "easeOut")
+            SCNTransaction.animationDuration = 0
+            self.isAnimatingReorientation = false
+        }
+        SCNTransaction.commit()
+    }
+    
+    func setCameraFOV(fov: Double) {
+        isAnimatingReorientation = true
+        SCNTransaction.begin()
+        SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: "easeIn")
+        SCNTransaction.animationDuration = 0.2
+        pointOfView.camera?.yFov = fov
+        SCNTransaction.completionBlock = {
+            SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: "easeOut")
+            SCNTransaction.animationDuration = 0
+            self.isAnimatingReorientation = false
+        }
+        SCNTransaction.commit()
+    }
 
     /**
      Reorients the camera's vertical angle component so it's pointing directly at the horizon.

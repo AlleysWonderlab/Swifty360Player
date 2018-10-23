@@ -167,6 +167,46 @@ open class Swifty360ViewController: UIViewController, Swifty360CameraControllerD
     open func reorientVerticalCameraAngleToHorizon(animated: Bool) {
         cameraController.reorientVerticalCameraAngleToHorizon(animated: animated)
     }
+    
+    open func addDirectionNode(name: String) {
+        guard let nodeName = Node.Name(rawValue: name) else {return}
+        playerScene.addDirectionNode(nodeName)
+    }
+    open func removeDirectionNode(name: String) {
+        guard let nodeName = Node.Name(rawValue: name) else {return}
+        playerScene.removeDirectionNode(nodeName)
+    }
+    
+    open func setupTapGesture() {
+        let tap = UITapGestureRecognizer()
+        tap.numberOfTapsRequired = 1
+        tap.numberOfTouchesRequired = 1
+        tap.addTarget(self, action: #selector(sceneTapped(recognizer:)))
+        sceneView.addGestureRecognizer(tap)
+    }
+    
+    @objc open func sceneTapped(recognizer: UITapGestureRecognizer) {
+        let location = recognizer.location(in: sceneView)
+        let hitResults = sceneView.hitTest(location, options: nil)
+        
+        if hitResults.count > 0 {
+            let result = hitResults[0]
+            let node = result.node
+            guard let name = node.name else { return }
+            guard let nodeName: Node.Name = Node.Name(rawValue: name) else { return }
+            switch nodeName {
+            case .forward:
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fowardNode"), object: nil)
+            case .backward:
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "backwardNode"), object: nil)
+            case .left:
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftNode"), object: nil)
+            case .right:
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightNode"), object: nil)
+                
+            }
+        }
+    }
 
     internal func sceneBoundsForScreenBounds(screenBounds: CGRect) -> CGRect {
         let maxValue = max(screenBounds.size.width, screenBounds.size.height)

@@ -22,6 +22,8 @@
 		1CD2A5351F99E68200419DCF /* SwiftySKVideoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD2A5341F99E68200419DCF /* SwiftySKVideoNode.swift */; };
 		1CD2A5371F99FA8600419DCF /* Float++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD2A5361F99FA8600419DCF /* Float++.swift */; };
 		1CD2A5391F9A1DBF00419DCF /* Swifty360EulerAngleCalculationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD2A5381F9A1DBF00419DCF /* Swifty360EulerAngleCalculationsTests.swift */; };
+		9BFF14C6217D7BFF00B37E11 /* SwiftySCNDirectionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF14C5217D7BFF00B37E11 /* SwiftySCNDirectionNode.swift */; };
+		9BFF14C8217DD08300B37E11 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFF14C7217DD08300B37E11 /* Node.swift */; };
 		A449C3361F92480C002482F0 /* Swifty360EulerAngleCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A449C3351F92480C002482F0 /* Swifty360EulerAngleCalculations.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +56,8 @@
 		1CD2A5341F99E68200419DCF /* SwiftySKVideoNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftySKVideoNode.swift; sourceTree = "<group>"; };
 		1CD2A5361F99FA8600419DCF /* Float++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float++.swift"; sourceTree = "<group>"; };
 		1CD2A5381F9A1DBF00419DCF /* Swifty360EulerAngleCalculationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swifty360EulerAngleCalculationsTests.swift; sourceTree = "<group>"; };
+		9BFF14C5217D7BFF00B37E11 /* SwiftySCNDirectionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftySCNDirectionNode.swift; sourceTree = "<group>"; };
+		9BFF14C7217DD08300B37E11 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		A449C3351F92480C002482F0 /* Swifty360EulerAngleCalculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swifty360EulerAngleCalculations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,8 +111,10 @@
 				A449C3351F92480C002482F0 /* Swifty360EulerAngleCalculations.swift */,
 				1C45AE8D1F95F14D00E431DE /* Swifty360PlayerScene.swift */,
 				1CD2A5341F99E68200419DCF /* SwiftySKVideoNode.swift */,
+				9BFF14C5217D7BFF00B37E11 /* SwiftySCNDirectionNode.swift */,
 				1C0B05181F9B5CAE0061759A /* Swifty360ViewController.swift */,
 				1CB04F691FC1C1A0006E7D0F /* Swifty360View.swift */,
+				9BFF14C7217DD08300B37E11 /* Node.swift */,
 				1CD2A5361F99FA8600419DCF /* Float++.swift */,
 			);
 			path = Swifty360Player;
@@ -236,10 +242,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BFF14C6217D7BFF00B37E11 /* SwiftySCNDirectionNode.swift in Sources */,
 				1C17260B1F90C48700259C86 /* Swifty360CameraPanGestureRecognizer.swift in Sources */,
 				1CD2A5371F99FA8600419DCF /* Float++.swift in Sources */,
 				1C0B05191F9B5CAE0061759A /* Swifty360ViewController.swift in Sources */,
 				1C51B4E11F8F767200FD1300 /* Swifty360MotionManagerObserverItem.swift in Sources */,
+				9BFF14C8217DD08300B37E11 /* Node.swift in Sources */,
 				1C17260D1F90C54D00259C86 /* Swifty360CameraController.swift in Sources */,
 				1CD2A5351F99E68200419DCF /* SwiftySKVideoNode.swift in Sources */,
 				A449C3361F92480C002482F0 /* Swifty360EulerAngleCalculations.swift in Sources */,

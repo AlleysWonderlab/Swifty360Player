@@ -100,6 +100,21 @@ open class Swifty360PlayerScene: SCNScene {
         sphereNode.geometry?.firstMaterial?.isDoubleSided = true
         return sphereNode
     }
+    
+    internal func getDirectionNode(position: SCNVector3, eulerAngles: SCNVector3) -> SwiftySCNDirectionNode {
+        let node = SwiftySCNDirectionNode(position: position, eulerAngles: eulerAngles)
+        node.geometry = getGeometry()
+        return node
+    }
+    
+    internal func getGeometry() -> SCNGeometry {
+        let geometry = SCNPlane(width: 2, height: 2)
+        let material = SCNMaterial()
+        material.diffuse.contents = UIImage(named: "play-button")
+        geometry.firstMaterial = material
+        geometry.firstMaterial?.isDoubleSided = true
+        return geometry
+    }
 
 }
 

@@ -167,6 +167,15 @@ open class Swifty360ViewController: UIViewController, Swifty360CameraControllerD
     open func reorientVerticalCameraAngleToHorizon(animated: Bool) {
         cameraController.reorientVerticalCameraAngleToHorizon(animated: animated)
     }
+    
+    open func addDirectionNode(name: String) {
+        guard let nodeName = Node.Name(rawValue: name) else {return}
+        playerScene.addDirectionNode(nodeName)
+    }
+    open func removeDirectionNode(name: String) {
+        guard let nodeName = Node.Name(rawValue: name) else {return}
+        playerScene.removeDirectionNode(nodeName)
+    }
 
     internal func sceneBoundsForScreenBounds(screenBounds: CGRect) -> CGRect {
         let maxValue = max(screenBounds.size.width, screenBounds.size.height)

@@ -98,6 +98,31 @@ open class Swifty360PlayerScene: SCNScene {
         guard let node = self.rootNode.childNode(withName: name.rawValue, recursively: false) else {return}
         node.removeFromParentNode()
     }
+    
+    func rotateRootNodeInit() {
+        self.rootNode.eulerAngles = SCNVector3(0, 0, 0)
+    }
+    
+    func rotateRootNodeToRight() {
+        SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: "easeOut")
+        SCNTransaction.animationDuration = 0.3
+        SCNTransaction.begin()
+        self.rootNode.eulerAngles = SCNVector3(0, -Double(60) * .pi/180, 0)
+        SCNTransaction.completionBlock = {
+            SCNTransaction.animationDuration = 0
+        }
+        SCNTransaction.commit()
+    }
+    func rotateRootNodeToLeft() {
+        SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: "easeOut")
+        SCNTransaction.animationDuration = 0.3
+        SCNTransaction.begin()
+        self.rootNode.eulerAngles = SCNVector3(0, Double(60) * .pi/180, 0)
+        SCNTransaction.completionBlock = {
+            SCNTransaction.animationDuration = 0
+        }
+        SCNTransaction.commit()
+    }
 
     internal func getScene() -> SKScene {
         let assetTrack = player.currentItem?.asset.tracks(withMediaType: .video).first

@@ -80,6 +80,24 @@ open class Swifty360PlayerScene: SCNScene {
         player.pause()
         videoNode.isPaused = true
     }
+    
+    func addDirectionNode(_ name: Node.Name) {
+        switch name {
+        case .forward:
+            self.rootNode.addChildNode(self.forwardNode)
+        case .backward:
+            self.rootNode.addChildNode(self.backwardNode)
+        case .left:
+            self.rootNode.addChildNode(self.leftNode)
+        case .right:
+            self.rootNode.addChildNode(self.rightNode)
+        }
+    }
+    
+    func removeDirectionNode(_ name: Node.Name) {
+        guard let node = self.rootNode.childNode(withName: name.rawValue, recursively: false) else {return}
+        node.removeFromParentNode()
+    }
 
     internal func getScene() -> SKScene {
         let assetTrack = player.currentItem?.asset.tracks(withMediaType: .video).first

@@ -37,6 +37,10 @@ open class Swifty360PlayerScene: SCNScene {
         cameraNode.position = SCNVector3Make(0.0, 0.0, 0.0)
         return cameraNode
     }
+    private var forwardNode: SwiftySCNDirectionNode!
+    private var backwardNode: SwiftySCNDirectionNode!
+    private var leftNode: SwiftySCNDirectionNode!
+    private var rightNode: SwiftySCNDirectionNode!
     private var player: AVPlayer!
 
     public init(withAVPlayer player: AVPlayer, view: SCNView) {
@@ -50,6 +54,15 @@ open class Swifty360PlayerScene: SCNScene {
         self.rootNode.addChildNode(getSphereNode(scene: scene))
         view.scene = self
         view.pointOfView = cameraNode
+        
+        forwardNode = getDirectionNode(position: Node.Position.forward, eulerAngles: Node.Angle.forward)
+        backwardNode = getDirectionNode(position: Node.Position.backward, eulerAngles: Node.Angle.backward)
+        leftNode = getDirectionNode(position: Node.Position.left, eulerAngles: Node.Angle.left)
+        rightNode = getDirectionNode(position: Node.Position.right, eulerAngles: Node.Angle.right)
+        forwardNode.name = Node.Name.forward.rawValue
+        backwardNode.name = Node.Name.backward.rawValue
+        leftNode.name = Node.Name.left.rawValue
+        rightNode.name = Node.Name.right.rawValue
     }
 
     required public init?(coder aDecoder: NSCoder) {

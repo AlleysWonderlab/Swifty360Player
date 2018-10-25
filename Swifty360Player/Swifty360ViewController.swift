@@ -203,7 +203,10 @@ open class Swifty360ViewController: UIViewController, Swifty360CameraControllerD
         singleTap.numberOfTouchesRequired = 1
         singleTap.addTarget(self, action: #selector(sceneSingleTapped(recognizer:)))
         sceneView.addGestureRecognizer(singleTap)
-        
+        let doubleTap = UITapGestureRecognizer()
+        doubleTap.numberOfTapsRequired = 2
+        doubleTap.numberOfTouchesRequired = 1
+        doubleTap.addTarget(self, action: #selector(sceneDoubleTapped(recognizer:)))
     }
     
     @objc func sceneSingleTapped(recognizer: UITapGestureRecognizer) {
@@ -223,6 +226,27 @@ open class Swifty360ViewController: UIViewController, Swifty360CameraControllerD
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftNode_singleTap"), object: nil)
             case .right:
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightNode_singleTap"), object: nil)
+            }
+        }
+    }
+    
+    @objc func sceneDoubleTapped(recognizer: UITapGestureRecognizer) {
+        let location = recognizer.location(in: sceneView)
+        let hitResults = sceneView.hitTest(location, options: nil)
+        if hitResults.count > 0 {
+            let result = hitResults[0]
+            let node = result.node
+            guard let name = node.name else { return }
+            guard let nodeName: Node.Name = Node.Name(rawValue: name) else { return }
+            switch nodeName {
+            case .forward:
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fowardNode_doubleTap"), object: nil)
+            case .backward:
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "backwardNode_doubleTap"), object: nil)
+            case .left:
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftNode_doubleTap"), object: nil)
+            case .right:
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightNode_doubleTap"), object: nil)
             }
         }
     }

@@ -177,6 +177,14 @@ open class Swifty360ViewController: UIViewController, Swifty360CameraControllerD
         playerScene.removeDirectionNode(nodeName)
     }
     
+    open func setCameraFov(withViewSize size: CGSize) {
+        cameraController.setCameraFOV(viewSize: size)
+    }
+    
+    open func setCameraFovLittleBackward() {
+        cameraController.setCameraFOV(fov: Swifty360EulerAngleCalculationYFovMiddle.getDouble())
+    }
+    
     open func setupTapGesture() {
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1

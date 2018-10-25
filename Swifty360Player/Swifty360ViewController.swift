@@ -198,17 +198,17 @@ open class Swifty360ViewController: UIViewController, Swifty360CameraControllerD
     }
     
     open func setupTapGesture() {
-        let tap = UITapGestureRecognizer()
-        tap.numberOfTapsRequired = 1
-        tap.numberOfTouchesRequired = 1
-        tap.addTarget(self, action: #selector(sceneTapped(recognizer:)))
-        sceneView.addGestureRecognizer(tap)
+        let singleTap = UITapGestureRecognizer()
+        singleTap.numberOfTapsRequired = 1
+        singleTap.numberOfTouchesRequired = 1
+        singleTap.addTarget(self, action: #selector(sceneSingleTapped(recognizer:)))
+        sceneView.addGestureRecognizer(singleTap)
+        
     }
     
-    @objc open func sceneTapped(recognizer: UITapGestureRecognizer) {
+    @objc func sceneSingleTapped(recognizer: UITapGestureRecognizer) {
         let location = recognizer.location(in: sceneView)
         let hitResults = sceneView.hitTest(location, options: nil)
-        
         if hitResults.count > 0 {
             let result = hitResults[0]
             let node = result.node
@@ -216,14 +216,13 @@ open class Swifty360ViewController: UIViewController, Swifty360CameraControllerD
             guard let nodeName: Node.Name = Node.Name(rawValue: name) else { return }
             switch nodeName {
             case .forward:
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fowardNode"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fowardNode_singleTap"), object: nil)
             case .backward:
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "backwardNode"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "backwardNode_singleTap"), object: nil)
             case .left:
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftNode"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftNode_singleTap"), object: nil)
             case .right:
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightNode"), object: nil)
-                
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightNode_singleTap"), object: nil)
             }
         }
     }

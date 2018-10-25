@@ -185,6 +185,18 @@ open class Swifty360ViewController: UIViewController, Swifty360CameraControllerD
         cameraController.setCameraFOV(fov: Swifty360EulerAngleCalculationYFovMiddle.getDouble())
     }
     
+    open func rotateInit() {
+        playerScene.rotateRootNodeInit()
+    }
+    
+    open func rotateToRight() {
+        playerScene.rotateRootNodeToRight()
+    }
+    
+    open func rotateToLeft() {
+        playerScene.rotateRootNodeToLeft()
+    }
+    
     open func setupTapGesture() {
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1

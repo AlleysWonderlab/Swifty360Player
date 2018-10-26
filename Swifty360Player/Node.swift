@@ -16,7 +16,7 @@ public enum Node {
     }
     
     enum Name: String {
-        case forward = "foward_node"
+        case forward = "forward_node"
         case left = "left_node"
         case right = "right_node"
         case backward = "backward_node"

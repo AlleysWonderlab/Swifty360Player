@@ -126,6 +126,8 @@ open class Swifty360ViewController: UIViewController, Swifty360CameraControllerD
         sceneView.isPlaying = true
 
         cameraController.updateCameraFOV(withViewSize: view.bounds.size)
+        
+        setupTapGesture()
     }
 
     override open func viewDidLayoutSubviews() {

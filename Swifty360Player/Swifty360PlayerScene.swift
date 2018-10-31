@@ -107,7 +107,7 @@ open class Swifty360PlayerScene: SCNScene {
         SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: "easeOut")
         SCNTransaction.animationDuration = 0.3
         SCNTransaction.begin()
-        self.rootNode.eulerAngles = SCNVector3(0, -Double(60) * .pi/180, 0)
+        self.rootNode.eulerAngles = SCNVector3(0, Double(60) * .pi/180, 0)
         SCNTransaction.completionBlock = {
             SCNTransaction.animationDuration = 0
         }
@@ -117,7 +117,7 @@ open class Swifty360PlayerScene: SCNScene {
         SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: "easeOut")
         SCNTransaction.animationDuration = 0.3
         SCNTransaction.begin()
-        self.rootNode.eulerAngles = SCNVector3(0, Double(60) * .pi/180, 0)
+        self.rootNode.eulerAngles = SCNVector3(0, -Double(60) * .pi/180, 0)
         SCNTransaction.completionBlock = {
             SCNTransaction.animationDuration = 0
         }

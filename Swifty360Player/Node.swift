@@ -23,16 +23,16 @@ public enum Node {
     }
     
     enum Position {
-        static let forward = SCNVector3(0, -7, -10.2)
-        static let left = SCNVector3(2, -7, -9)
-        static let right = SCNVector3(-2, -7, -9)
-        static let backward = SCNVector3(0, -7, -7.8)
+        static let forward = SCNVector3(0, -7, 10.2)
+        static let left = SCNVector3(-2, -7, 9)
+        static let right = SCNVector3(2, -7, 9)
+        static let backward = SCNVector3(0, -7, 7.8)
     }
     
     enum Angle {
-        static let forward = SCNVector3(radian(degree: 90), radian(degree: 180), 0)
-        static let left = SCNVector3(radian(degree: 90), radian(degree: 90), 0)
-        static let right = SCNVector3(radian(degree: 90), radian(degree: 270), 0)
-        static let backward = SCNVector3(radian(degree: 90), 0, 0)
+        static let forward = SCNVector3(radian(degree: 90), 0, 0)
+        static let left = SCNVector3(radian(degree: 90), radian(degree: 270), 0)
+        static let right = SCNVector3(radian(degree: 90), radian(degree: 90), 0)
+        static let backward = SCNVector3(radian(degree: 90), radian(degree: 180), 0)
     }
 }

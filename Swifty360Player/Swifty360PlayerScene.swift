@@ -104,8 +104,8 @@ open class Swifty360PlayerScene: SCNScene {
     }
     
     func rotateRootNodeToRight() {
-        SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: "easeOut")
-        SCNTransaction.animationDuration = 0.3
+        SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: "easeInEaseOut")
+        SCNTransaction.animationDuration = 0.6
         SCNTransaction.begin()
         self.rootNode.eulerAngles = SCNVector3(0, Double(80) * .pi/180, 0)
         SCNTransaction.completionBlock = {
@@ -114,8 +114,8 @@ open class Swifty360PlayerScene: SCNScene {
         SCNTransaction.commit()
     }
     func rotateRootNodeToLeft() {
-        SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: "easeOut")
-        SCNTransaction.animationDuration = 0.3
+        SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: "easeInEaseOut")
+        SCNTransaction.animationDuration = 0.6
         SCNTransaction.begin()
         self.rootNode.eulerAngles = SCNVector3(0, -Double(80) * .pi/180, 0)
         SCNTransaction.completionBlock = {

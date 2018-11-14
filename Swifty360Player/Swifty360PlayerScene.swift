@@ -101,7 +101,7 @@ open class Swifty360PlayerScene: SCNScene {
     
     func addPoiNode(_ id: String, geo: (Double, Double, Double), eulerAngleY: Double) {
         let position = SCNVector3(geo.0, geo.1, geo.2)
-        let angles = SCNVector3(Node.radian(degree: 90), eulerAngleY, 0)
+        let angles = SCNVector3(0, eulerAngleY, 0)
         let poiNode = SwiftySCNPoiNode(position: position, eulerAngles: angles)
         poiNode.name = id
         self.rootNode.addChildNode(poiNode)

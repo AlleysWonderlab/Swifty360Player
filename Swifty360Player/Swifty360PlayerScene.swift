@@ -99,25 +99,46 @@ open class Swifty360PlayerScene: SCNScene {
         node.removeFromParentNode()
     }
     
+    func addPoiNode(_ id: String, geo: (Double, Double, Double), eulerAngleY: Double) {
+        let position = SCNVector3(geo.0, geo.1, geo.2)
+        let angles = SCNVector3(0, eulerAngleY, 0)
+        let poiNode = SwiftySCNPoiNode(position: position, eulerAngles: angles)
+        poiNode.name = id
+        self.rootNode.addChildNode(poiNode)
+    }
+    
+    func removePoiNode(_ id: String) {
+        guard let node = self.rootNode.childNode(withName: id, recursively: true) else {return}
+        node.removeFromParentNode()
+    }
+    
+    func updatePoiNode(_ id: String, position: (Double, Double, Double), eulerAngleY: Double) {
+        guard let node = self.rootNode.childNode(withName: id, recursively: true) else {return}
+        let newPosition = SCNVector3(position.0, position.1, position.2)
+        let newAngles = SCNVector3(0, eulerAngleY, 0)
+        node.position = newPosition
+        node.eulerAngles = newAngles
+    }
+    
     func rotateRootNodeInit() {
         self.rootNode.eulerAngles = SCNVector3(0, 0, 0)
     }
     
     func rotateRootNodeToRight() {
-        SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: "easeOut")
-        SCNTransaction.animationDuration = 0.3
+        SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: "easeInEaseOut")
+        SCNTransaction.animationDuration = 0.6
         SCNTransaction.begin()
-        self.rootNode.eulerAngles = SCNVector3(0, -Double(60) * .pi/180, 0)
+        self.rootNode.eulerAngles = SCNVector3(0, Double(80) * .pi/180, 0)
         SCNTransaction.completionBlock = {
             SCNTransaction.animationDuration = 0
         }
         SCNTransaction.commit()
     }
     func rotateRootNodeToLeft() {
-        SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: "easeOut")
-        SCNTransaction.animationDuration = 0.3
+        SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: "easeInEaseOut")
+        SCNTransaction.animationDuration = 0.6
         SCNTransaction.begin()
-        self.rootNode.eulerAngles = SCNVector3(0, Double(60) * .pi/180, 0)
+        self.rootNode.eulerAngles = SCNVector3(0, -Double(80) * .pi/180, 0)
         SCNTransaction.completionBlock = {
             SCNTransaction.animationDuration = 0
         }

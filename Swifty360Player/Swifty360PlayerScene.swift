@@ -99,10 +99,10 @@ open class Swifty360PlayerScene: SCNScene {
         node.removeFromParentNode()
     }
     
-    func addPoiNode(_ id: String, geo: (Double, Double, Double), theta: Double) {
+    func addPoiNode(_ id: String, geo: (Double, Double, Double), eulerAngleY: Double) {
         let position = SCNVector3(geo.0, geo.1, geo.2)
-        let angle = SCNVector3(Node.radian(degree: 90), theta, 0)
-        let poiNode = SwiftySCNPoiNode(position: position, eulerAngles: angle)
+        let angles = SCNVector3(Node.radian(degree: 90), eulerAngleY, 0)
+        let poiNode = SwiftySCNPoiNode(position: position, eulerAngles: angles)
         poiNode.name = id
         self.rootNode.addChildNode(poiNode)
     }
@@ -110,6 +110,14 @@ open class Swifty360PlayerScene: SCNScene {
     func removePoiNode(_ id: String) {
         guard let node = self.rootNode.childNode(withName: id, recursively: true) else {return}
         node.removeFromParentNode()
+    }
+    
+    func updatePoiNode(_ id: String, position: (Double, Double, Double), eulerAngleY: Double) {
+        guard let node = self.rootNode.childNode(withName: id, recursively: true) else {return}
+        let newPosition = SCNVector3(position.0, position.1, position.2)
+        let newAngles = SCNVector3(0, eulerAngleY, 0)
+        node.position = newPosition
+        node.eulerAngles = newAngles
     }
     
     func rotateRootNodeInit() {

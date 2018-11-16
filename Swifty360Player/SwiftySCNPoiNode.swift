@@ -25,7 +25,7 @@ open class SwiftySCNPoiNode: SCNNode {
     internal func getGeometry() -> SCNGeometry {
         let geometry = SCNPlane(width: 2, height: 2)
         let material = SCNMaterial()
-        material.diffuse.contents = UIColor.blue
+        material.diffuse.contents = UIImage(named: "poi")
         geometry.cornerRadius = 1
         geometry.firstMaterial = material
         geometry.firstMaterial?.isDoubleSided = true

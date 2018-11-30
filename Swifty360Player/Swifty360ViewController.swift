@@ -203,6 +203,10 @@ open class Swifty360ViewController: UIViewController, Swifty360CameraControllerD
         playerScene.rotateRootNodeInit()
     }
     
+    open func rotate(withDegree degree: Int) {
+        playerScene.rotateRootNode(withDegree: degree)
+    }
+    
     open func rotateToRight() {
         playerScene.rotateRootNodeToRight()
     }

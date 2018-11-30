@@ -124,6 +124,17 @@ open class Swifty360PlayerScene: SCNScene {
         self.rootNode.eulerAngles = SCNVector3(0, 0, 0)
     }
     
+    func rotateRootNode(withDegree angle: Int) {
+        SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: "easeInEaseOut")
+        SCNTransaction.animationDuration = 0.7
+        SCNTransaction.begin()
+        self.rootNode.eulerAngles = SCNVector3(0, Double(angle) * .pi/180, 0)
+        SCNTransaction.completionBlock = {
+            SCNTransaction.animationDuration = 0
+        }
+        SCNTransaction.commit()
+    }
+    
     func rotateRootNodeToRight() {
         SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: "easeInEaseOut")
         SCNTransaction.animationDuration = 0.6

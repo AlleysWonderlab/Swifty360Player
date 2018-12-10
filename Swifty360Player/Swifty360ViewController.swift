@@ -231,9 +231,7 @@ open class Swifty360ViewController: UIViewController, Swifty360CameraControllerD
         let location = recognizer.location(in: sceneView)
         let hitResults = sceneView.hitTest(location, options: nil)
         if hitResults.count > 0 {
-            let result = hitResults[0]
-            let node = result.node
-            guard let name = node.name else { return }
+            guard let name = hitResults[0].node.name else { return }
             guard let nodeName: Node.Name = Node.Name(rawValue: name) else { return }
             switch nodeName {
             case .forward:
@@ -252,9 +250,7 @@ open class Swifty360ViewController: UIViewController, Swifty360CameraControllerD
         let location = recognizer.location(in: sceneView)
         let hitResults = sceneView.hitTest(location, options: nil)
         if hitResults.count > 0 {
-            let result = hitResults[0]
-            let node = result.node
-            guard let name = node.name else { return }
+            guard let name = hitResults[0].node.name else { return }
             guard let nodeName: Node.Name = Node.Name(rawValue: name) else { return }
             switch nodeName {
             case .forward:

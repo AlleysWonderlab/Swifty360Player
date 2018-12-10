@@ -207,14 +207,6 @@ open class Swifty360ViewController: UIViewController, Swifty360CameraControllerD
         playerScene.rotateRootNode(withDegree: degree)
     }
     
-    open func rotateToRight() {
-        playerScene.rotateRootNodeToRight()
-    }
-    
-    open func rotateToLeft() {
-        playerScene.rotateRootNodeToLeft()
-    }
-    
     open func setupTapGesture() {
         let singleTap = UITapGestureRecognizer()
         singleTap.numberOfTapsRequired = 1

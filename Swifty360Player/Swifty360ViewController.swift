@@ -179,8 +179,8 @@ open class Swifty360ViewController: UIViewController, Swifty360CameraControllerD
         playerScene.removeDirectionNode(nodeName)
     }
     
-    open func addPoiNode(id: String, geo: (Double, Double, Double), theta eulerAngleY: Double) {
-        playerScene.addPoiNode(id, geo: geo, eulerAngleY: eulerAngleY)
+    open func addPoiNode(id: String, position: (Double, Double, Double), theta eulerAngleY: Double) {
+        playerScene.addPoiNode(id, position: position, eulerAngleY: eulerAngleY)
     }
     
     open func removePoiNode(id: String) {

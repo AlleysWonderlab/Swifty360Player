@@ -187,8 +187,8 @@ open class Swifty360ViewController: UIViewController, Swifty360CameraControllerD
         playerScene.removePoiNode(id)
     }
     
-    open func updatePoiNode(id: String, geo: (Double, Double, Double), theta eulerAngleY: Double) {
-        playerScene.updatePoiNode(id, position: geo, eulerAngleY: eulerAngleY)
+    open func updatePoiNode(id: String, position: (Double, Double, Double), theta eulerAngleY: Double) {
+        playerScene.updatePoiNode(id, position: position, eulerAngleY: eulerAngleY)
     }
     
     open func setCameraFov(withViewSize size: CGSize) {
